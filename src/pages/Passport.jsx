@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
-import api, { mockData } from '../services/api';
+import api from '../services/api';
 
 const Passport = () => {
   const { id } = useParams();
@@ -13,17 +13,15 @@ const Passport = () => {
   });
 
   useEffect(() => {
-    // Find in mock data or fetch public batch
-    const found = mockData.batches.find((b) => b.id === id) || mockData.batches[0];
-    setBatch(found);
-
-    api.get(`/batch/${id}/public`)
+    api.get(`/batches/${id}`)
       .then((res) => {
         if (res.data?.data) {
           setBatch(res.data.data);
         }
       })
-      .catch(() => {});
+      .catch((err) => {
+        console.error(err);
+      });
   }, [id]);
 
   const handleReportSubmit = (e) => {

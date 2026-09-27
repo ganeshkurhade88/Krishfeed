@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { mockData } from '../services/api';
+import api from '../services/api';
 
 const Leaderboard = () => {
   const { t } = useTranslation();
   const [district, setDistrict] = useState('Akola');
-  const [leaders, setLeaders] = useState(mockData.leaderboard);
+  const [leaders, setLeaders] = useState([]);
+
+  React.useEffect(() => {
+    api.get('/leaderboard')
+      .then((res) => {
+        if (res.data?.data) setLeaders(res.data.data);
+      })
+      .catch(() => {});
+  }, [district]);
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">

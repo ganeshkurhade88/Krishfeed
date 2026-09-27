@@ -28,12 +28,19 @@ const createListing = async (req, res, next) => {
 const getListings = async (req, res, next) => {
   try {
     const result = await db.query(`
-      SELECT m.*, b.feed_type, b.district, b.state, u.name as farmer_name
+      SELECT 
+        m.id, m.batch_id, m.price_per_kg, m.min_quantity_kg, m.available_kg,
+        m.listing_status, m.listed_at, m.expires_at,
+        b.feed_type, b.district, b.state, b.quantity_kg, b.storage_type, b.date_stored,
+        u.name AS farmer_name,
+        COALESCE(tr.visual_score, 70) AS quality_score
       FROM marketplace_listings m
       JOIN batches b ON m.batch_id = b.id
       JOIN users u ON m.farmer_id = u.id
-      WHERE m.listing_status = 'active' AND m.expires_at > NOW()
-      ORDER BY m.listed_at DESC
+      LEFT JOIN test_results tr ON tr.batch_id = b.id
+      WHERE m.listing_status = 'active'
+        AND (m.expires_at IS NULL OR m.expires_at > NOW())
+      ORDER BY quality_score DESC, m.listed_at DESC
     `);
     res.json(ApiResponse.success(result.rows));
   } catch (error) {

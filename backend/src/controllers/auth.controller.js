@@ -38,7 +38,11 @@ const register = async (req, res, next) => {
 
     await db.query('COMMIT');
 
-    res.status(201).json(ApiResponse.success(user, 'Registration successful'));
+    // Generate token so frontend can auto-login
+    const jwtSecret = process.env.JWT_SECRET || 'fallback_secret';
+    const token = jwt.sign({ userId: user.id, role: user.role }, jwtSecret, { expiresIn: '1h' });
+
+    res.status(201).json(ApiResponse.success({ token, user }, 'Registration successful'));
   } catch (error) {
     await db.query('ROLLBACK');
     next(error);
@@ -60,8 +64,11 @@ const login = async (req, res, next) => {
       return res.status(400).json(ApiResponse.error('Invalid credentials'));
     }
 
-    const token = jwt.sign({ userId: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    const refreshToken = jwt.sign({ userId: user.id }, process.env.JWT_REFRESH_SECRET, { expiresIn: '7d' });
+    const jwtSecret = process.env.JWT_SECRET || 'fallback_secret';
+    const token = jwt.sign({ userId: user.id, role: user.role }, jwtSecret, { expiresIn: '1h' });
+    // Only use refresh token if secret is set
+    const refreshSecret = process.env.JWT_REFRESH_SECRET || jwtSecret + '_refresh';
+    const refreshToken = jwt.sign({ userId: user.id }, refreshSecret, { expiresIn: '7d' });
 
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,

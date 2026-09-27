@@ -8,6 +8,8 @@ import Advisory from './pages/Advisory';
 import Leaderboard from './pages/Leaderboard';
 import Marketplace from './pages/Marketplace';
 import Passport from './pages/Passport';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/test-feed" element={<TestFeed />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/advisory" element={<Advisory />} />

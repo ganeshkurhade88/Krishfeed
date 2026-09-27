@@ -6,6 +6,14 @@
   "nav.leaderboard": "Leaderboard",
   "nav.marketplace": "Marketplace",
   
+  "page.dashboard.title": "Farmer Quality Dashboard",
+  "page.dashboard.desc": "Monitor batch health, early spoilage warnings, and generate verifiable QR passports.",
+  "page.testfeed.title": "Test Feed & Silage Quality",
+  "page.testfeed.desc": "Enter batch details and visual observations to get an AI-powered nutritional estimate and risk forecast.",
+  "page.marketplace.title": "Local Feed & Silage Marketplace",
+  "page.marketplace.desc": "Buy and sell quality-tested feed directly from farmers in your district.",
+
+  
   "home.hero.headline": "Test Your Feed Quality in 2 Minutes",
   "home.hero.subhead": "No lab. No device. Just your phone.",
   "home.hero.cta": "Test My Feed Now",
