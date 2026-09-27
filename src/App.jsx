@@ -2,22 +2,28 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import Home from './pages/Home';
+import TestFeed from './pages/TestFeed';
+import Dashboard from './pages/Dashboard';
+import Advisory from './pages/Advisory';
+import Leaderboard from './pages/Leaderboard';
+import Marketplace from './pages/Marketplace';
+import Passport from './pages/Passport';
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-off-white text-dark">
+    <div className="flex flex-col min-h-screen bg-off-white text-dark font-inter">
       <Navbar />
       
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* Mock routes for future implementation */}
-          <Route path="/test-feed" element={<div className="p-12 text-center text-2xl font-bold">Test Feed Page Coming Soon</div>} />
-          <Route path="/dashboard" element={<div className="p-12 text-center text-2xl font-bold">Dashboard Coming Soon</div>} />
-          <Route path="/advisory" element={<div className="p-12 text-center text-2xl font-bold">Advisory Coming Soon</div>} />
-          <Route path="/leaderboard" element={<div className="p-12 text-center text-2xl font-bold">Leaderboard Coming Soon</div>} />
-          <Route path="/marketplace" element={<div className="p-12 text-center text-2xl font-bold">Marketplace Coming Soon</div>} />
-          <Route path="*" element={<div className="p-12 text-center text-2xl font-bold">404 Not Found</div>} />
+          <Route path="/test-feed" element={<TestFeed />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/advisory" element={<Advisory />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/passport/:id" element={<Passport />} />
+          <Route path="*" element={<div className="p-16 text-center text-2xl font-bold text-dark-green">404 - Page Not Found</div>} />
         </Routes>
       </main>
 

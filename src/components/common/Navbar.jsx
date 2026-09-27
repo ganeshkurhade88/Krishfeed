@@ -11,31 +11,38 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-white rounded">
-              <svg className="h-8 w-8 text-lite-green" viewBox="0 0 64 64" fill="currentColor">
-                <rect width="64" height="64" rx="14" fill="#1B4332"/>
-                <text x="50%" y="38" textAnchor="middle" fontSize="28" fontWeight="700" fill="#D8F3DC">FS</text>
-                <text x="50%" y="52" textAnchor="middle" fontSize="10" fontWeight="400" fill="#52B788">AI</text>
-              </svg>
-              <span className="font-bold text-xl tracking-tight hidden sm:block">FeedSense AI</span>
+              <div className="h-9 w-9 rounded-xl bg-pale-green text-dark-green flex items-center justify-center font-black text-sm shadow">
+                FS
+              </div>
+              <div className="flex flex-col">
+                <span className="font-extrabold text-lg tracking-tight leading-none text-white">FeedSense AI</span>
+                <span className="text-[10px] text-lite-green font-semibold leading-none">Smart Feed & Silage</span>
+              </div>
             </Link>
           </div>
           
-          <div className="hidden md:flex space-x-8">
-            <Link to="/" className="text-pale-green hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-white">
-              {t('nav.home')}
+          <div className="hidden md:flex space-x-6">
+            <Link to="/" className="text-pale-green hover:text-white px-2 py-1 rounded text-sm font-medium transition-colors">
+              {t('nav.home') || 'Home'}
             </Link>
-            <Link to="/test-feed" className="text-pale-green hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-white">
-              {t('nav.test')}
+            <Link to="/test-feed" className="text-pale-green hover:text-white px-2 py-1 rounded text-sm font-medium transition-colors">
+              🧪 {t('nav.test') || 'Test Feed'}
             </Link>
-            <Link to="/dashboard" className="text-pale-green hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-white">
-              {t('nav.dashboard')}
+            <Link to="/dashboard" className="text-pale-green hover:text-white px-2 py-1 rounded text-sm font-medium transition-colors">
+              📊 {t('nav.dashboard') || 'Dashboard'}
             </Link>
-            <Link to="/marketplace" className="text-pale-green hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-white">
-              {t('nav.marketplace')}
+            <Link to="/advisory" className="text-pale-green hover:text-white px-2 py-1 rounded text-sm font-medium transition-colors">
+              🩺 Advisory
+            </Link>
+            <Link to="/marketplace" className="text-pale-green hover:text-white px-2 py-1 rounded text-sm font-medium transition-colors">
+              🛒 {t('nav.marketplace') || 'Marketplace'}
+            </Link>
+            <Link to="/leaderboard" className="text-pale-green hover:text-white px-2 py-1 rounded text-sm font-medium transition-colors">
+              🏆 Leaderboard
             </Link>
           </div>
           
-          <div className="flex items-center">
+          <div className="flex items-center gap-3">
             <LanguageSwitcher />
           </div>
         </div>
