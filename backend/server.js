@@ -39,6 +39,10 @@ app.use(express.json());
 startAlertScheduler();
 
 // Routes
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to FeedSense AI Backend API', status: 'running' });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date() });
 });
