@@ -45,8 +45,8 @@ const Navbar = () => {
             <Link to="/marketplace" className="text-pale-green hover:text-white px-2 py-1 rounded text-sm font-medium transition-colors">
               🛒 {t('nav.marketplace') || 'Marketplace'}
             </Link>
-            <Link to="/leaderboard" className="text-pale-green hover:text-white px-2 py-1 rounded text-sm font-medium transition-colors">
-              🏆 {t('nav.leaderboard') || 'Leaderboard'}
+            <Link to="/voice-calls" className="text-pale-green hover:text-white px-2 py-1 rounded text-sm font-medium transition-colors">
+              📞 {t('nav.voicecalls') || 'Voice Calls'}
             </Link>
           </div>
           

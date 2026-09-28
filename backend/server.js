@@ -13,7 +13,6 @@ const testingRoutes = require('./src/routes/testing.routes');
 const advisoryRoutes = require('./src/routes/advisory.routes');
 const marketplaceRoutes = require('./src/routes/marketplace.routes');
 const traceabilityRoutes = require('./src/routes/traceability.routes');
-const leaderboardRoutes = require('./src/routes/leaderboard.routes');
 const alertRoutes = require('./src/routes/alert.routes');
 const adminRoutes = require('./src/routes/admin.routes');
 
@@ -50,7 +49,6 @@ app.use('/api/testing', testingRoutes);
 app.use('/api/advisory', advisoryRoutes);
 app.use('/api/marketplace', marketplaceRoutes);
 app.use('/api/traceability', traceabilityRoutes);
-app.use('/api/leaderboard', leaderboardRoutes);
 app.use('/api/alerts', alertRoutes);
 app.use('/api/admin', adminRoutes);
 
