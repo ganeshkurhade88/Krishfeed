@@ -66,11 +66,11 @@ const Dashboard = () => {
   const [showTrackerModal, setShowTrackerModal] = useState(null);
 
   useEffect(() => {
-    // DUMMY DATA FOR PRESENTATION
+    // DUMMY DATA FOR PRESENTATION (Recent dates relative to Sep 2026)
     const defaultDummyBatches = [
-      { id: 'B-101', batch_code: 'B-101', feed_type: 'maize_silage', quantity_kg: 2000, storage_type: 'pit', date_stored: '2024-05-01', visual_score: 85 },
-      { id: 'B-102', batch_code: 'B-102', feed_type: 'sorghum_silage', quantity_kg: 1500, storage_type: 'bag', date_stored: '2024-05-15', visual_score: 65 },
-      { id: 'B-103', batch_code: 'B-103', feed_type: 'tmr', quantity_kg: 500, storage_type: 'open', date_stored: '2024-05-25', visual_score: 40 }
+      { id: 'B-101', batch_code: 'B-101', feed_type: 'maize_silage', quantity_kg: 2000, storage_type: 'pit', date_stored: '2026-08-15', visual_score: 88 },
+      { id: 'B-102', batch_code: 'B-102', feed_type: 'sorghum_silage', quantity_kg: 1500, storage_type: 'bag', date_stored: '2026-09-10', visual_score: 75 },
+      { id: 'B-103', batch_code: 'B-103', feed_type: 'tmr', quantity_kg: 500, storage_type: 'open', date_stored: '2026-09-20', visual_score: 90 }
     ];
     
     const localBatches = JSON.parse(localStorage.getItem('dummyBatches') || '[]');

@@ -24,7 +24,7 @@ const Login = () => {
       localStorage.setItem('token', dummyToken);
       localStorage.setItem('user', JSON.stringify(dummyUser));
       setLoading(false);
-      window.location.href = '/dashboard';
+      navigate('/dashboard');
     }, 1000);
   };
 
