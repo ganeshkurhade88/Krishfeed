@@ -28,15 +28,15 @@ const Marketplace = () => {
   const [inquirySent, setInquirySent] = useState(false);
   const [myInquiries, setMyInquiries] = useState([]);
 
-  // Try to fetch real listings from backend
+  // Use dummy listings for presentation
   useEffect(() => {
-    api.get('/marketplace')
-      .then((res) => {
-        if (res.data?.data && res.data.data.length > 0) {
-          setListings(res.data.data);
-        }
-      })
-      .catch(() => {});
+    const dummyListings = [
+      { id: 1, feed_type: 'maize_silage', district: 'Akola', farmer_village: 'Murtizapur', state: 'Maharashtra', farmer_name: 'Ramesh K.', quality_score: 88, price_per_kg: 6.5, available_kg: 5000, min_quantity_kg: 500, storage_type: 'pit', description: 'Premium quality maize silage, well fermented.', is_negotiable: true, farmer_phone: '9876543210' },
+      { id: 2, feed_type: 'sorghum_silage', district: 'Kolhapur', farmer_village: 'Panhala', state: 'Maharashtra', farmer_name: 'Suresh P.', quality_score: 72, price_per_kg: 5.0, available_kg: 2000, min_quantity_kg: 200, storage_type: 'bag', description: 'Good sorghum silage, ready for use.', is_negotiable: false, farmer_phone: '9876543211' },
+      { id: 3, feed_type: 'hay', district: 'Pune', farmer_village: 'Baramati', state: 'Maharashtra', farmer_name: 'Vijay B.', quality_score: 90, price_per_kg: 8.0, available_kg: 1000, min_quantity_kg: 100, storage_type: 'shed', description: 'Dry hay, excellent condition.', is_negotiable: true, farmer_phone: '9876543212' },
+      { id: 4, feed_type: 'tmr', district: 'Ahmednagar', farmer_village: 'Rahuri', state: 'Maharashtra', farmer_name: 'Amit S.', quality_score: 60, price_per_kg: 12.0, available_kg: 500, min_quantity_kg: 50, storage_type: 'open', description: 'TMR mixture, average quality.', is_negotiable: true, farmer_phone: '9876543213' }
+    ];
+    setListings(dummyListings);
   }, []);
 
   // Filter & sort

@@ -1,9 +1,9 @@
 {
-  "name": "feedsense-ai",
+  "name": "krushifeed-ai",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "FeedSense AI — Smart Feed & Silage Quality Testing for Indian Dairy Farmers",
+  "description": "KrushiFeed Ai — Smart Feed & Silage Quality Testing for Indian Dairy Farmers",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

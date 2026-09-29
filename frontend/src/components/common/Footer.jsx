@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
-            <h2 className="text-xl font-bold text-white mb-2">FeedSense AI (FARM2MARKET1)</h2>
+            <h2 className="text-xl font-bold text-white mb-2">KrushiFeed Ai (FARM2MARKET1)</h2>
             <p className="text-sm text-gray-400 max-w-sm">
               {t('footer.tagline')}
             </p>

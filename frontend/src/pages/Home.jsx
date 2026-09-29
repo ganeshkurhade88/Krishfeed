@@ -8,18 +8,6 @@ const Home = () => {
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-dark-green text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Subtle SVG background pattern */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="leaf-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                <path d="M50 20 C60 10, 80 10, 80 30 C80 50, 50 80, 50 80 C50 80, 20 50, 20 30 C20 10, 40 10, 50 20 Z" fill="currentColor" opacity="0.3"/>
-              </pattern>
-            </defs>
-            <rect x="0" y="0" width="100%" height="100%" fill="url(#leaf-pattern)" />
-          </svg>
-        </div>
-        
         <div className="relative max-w-4xl mx-auto text-center z-10 animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
             {t('home.hero.headline')}

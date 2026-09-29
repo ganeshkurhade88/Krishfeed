@@ -66,21 +66,20 @@ const Dashboard = () => {
   const [showTrackerModal, setShowTrackerModal] = useState(null);
 
   useEffect(() => {
-    api.get('/batches')
-      .then((res) => {
-        if (res.data?.data && res.data.data.length > 0) {
-          setBatches(res.data.data);
-        }
-      })
-      .catch(() => {});
+    // DUMMY DATA FOR PRESENTATION
+    const defaultDummyBatches = [
+      { id: 'B-101', batch_code: 'B-101', feed_type: 'maize_silage', quantity_kg: 2000, storage_type: 'pit', date_stored: '2024-05-01', visual_score: 85 },
+      { id: 'B-102', batch_code: 'B-102', feed_type: 'sorghum_silage', quantity_kg: 1500, storage_type: 'bag', date_stored: '2024-05-15', visual_score: 65 },
+      { id: 'B-103', batch_code: 'B-103', feed_type: 'tmr', quantity_kg: 500, storage_type: 'open', date_stored: '2024-05-25', visual_score: 40 }
+    ];
+    
+    const localBatches = JSON.parse(localStorage.getItem('dummyBatches') || '[]');
+    setBatches([...defaultDummyBatches, ...localBatches]);
 
-    api.get('/alerts')
-      .then((res) => {
-        if (res.data?.data) {
-          setAlerts(res.data.data);
-        }
-      })
-      .catch(() => {});
+    const dummyAlerts = [
+      { id: 1, alert_reason: 'High moisture detected in B-103', suggested_action: 'Check sealing and remove spoiled layer' }
+    ];
+    setAlerts(dummyAlerts);
   }, []);
 
   const dismissAlert = (id) => {

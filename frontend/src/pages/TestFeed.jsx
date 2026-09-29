@@ -142,15 +142,51 @@ const TestFeed = () => {
       });
       setEvidenceLevel(evLevel);
 
-      const batchRes = await api.post('/batches', { ...formData });
-      const batchId = batchRes.data.data.id;
-
-      const testRes = await api.post(`/testing/${batchId}`, { ...formData, visual_score: visualScore });
-      const { testResult, forecast, advisory } = testRes.data.data;
+      // DUMMY SUBMISSION FOR PRESENTATION
+      await new Promise(resolve => setTimeout(resolve, 1500));
       
-      setTestResult(testResult);
-      setTestForecast(forecast);
-      setTestAdvisory(advisory);
+      const dummyBatchId = `B-DEMO-${Math.floor(Math.random() * 10000)}`;
+      const dummyTestResult = {
+        batch_id: dummyBatchId,
+        visual_score: visualScore,
+        overall_risk_level: visualScore >= 75 ? 'low' : visualScore >= 55 ? 'medium' : 'high',
+      };
+      
+      const dummyForecast = {
+        base_score: visualScore,
+        day_7: Math.max(0, visualScore - 5),
+        day_15: Math.max(0, visualScore - 12),
+        day_30: Math.max(0, visualScore - 25)
+      };
+
+      const dummyAdvisory = {
+        feed_decision: visualScore >= 75 ? 'safe_to_feed' : visualScore >= 55 ? 'feed_with_caution' : 'do_not_feed',
+        feed_days_safe: visualScore >= 75 ? 30 : visualScore >= 55 ? 7 : 0,
+        advisory_en: visualScore >= 75 ? "Good quality feed. Safe to feed." : "Suboptimal feed. Use caution. Ensure no visible mold.",
+        advisory_mr: visualScore >= 75 ? "चांगल्या प्रतीचा चारा. जनावरांना खायला देण्यास सुरक्षित." : "मध्यम चारा. काळजीपूर्वक वापरा.",
+        advisory_hi: visualScore >= 75 ? "अच्छी गुणवत्ता वाला चारा। सुरक्षित है।" : "मध्यम चारा। सावधानी से उपयोग करें।",
+        nutritional_action: "Monitor feed intake and milk yield closely.",
+        storage_fix: "Ensure proper sealing and avoid moisture exposure."
+      };
+
+      // Save to localStorage to show in dashboard
+      const dummyBatch = {
+        id: dummyBatchId,
+        batch_code: dummyBatchId,
+        feed_type: formData.feed_type,
+        quantity_kg: formData.quantity_kg,
+        storage_type: formData.storage_type,
+        date_stored: formData.date_stored,
+        visual_score: visualScore
+      };
+      
+      const existingBatches = JSON.parse(localStorage.getItem('dummyBatches') || '[]');
+      existingBatches.push(dummyBatch);
+      localStorage.setItem('dummyBatches', JSON.stringify(existingBatches));
+
+      setTestResult(dummyTestResult);
+      setTestForecast(dummyForecast);
+      setTestAdvisory(dummyAdvisory);
       setStep(3);
     } catch (err) {
       console.error(err);

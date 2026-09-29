@@ -20,10 +20,10 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-white rounded">
               <div className="h-9 w-9 rounded-xl bg-pale-green text-dark-green flex items-center justify-center font-black text-sm shadow">
-                FS
+                KF
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-lg tracking-tight leading-none text-white">FeedSense AI</span>
+                <span className="font-extrabold text-lg tracking-tight leading-none text-white">KrushiFeed Ai</span>
                 <span className="text-[10px] text-lite-green font-semibold leading-none">Smart Feed & Silage</span>
               </div>
             </Link>

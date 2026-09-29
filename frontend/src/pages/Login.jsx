@@ -17,28 +17,15 @@ const Login = () => {
     setLoading(true);
     setError('');
 
-    try {
-      const res = await api.post('/auth/login', formData);
-      // Backend returns: { success: true, data: { token, user } }
-      const token = res.data?.data?.token;
-      const user = res.data?.data?.user;
-      if (token) {
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
-        window.location.href = '/dashboard';
-      } else {
-        setError('Login succeeded but no token received. Please try again.');
-      }
-    } catch (err) {
-      console.error('Login error:', err.response?.data || err.message);
-      if (!err.response) {
-        setError('Cannot reach server. Make sure backend is running on port 5000.');
-      } else {
-        setError(err.response?.data?.message || 'Invalid phone number or password.');
-      }
-    } finally {
+    // DUMMY LOGIN FOR PRESENTATION
+    setTimeout(() => {
+      const dummyToken = 'dummy_token_123';
+      const dummyUser = { id: 1, phone: formData.phone, name: 'Farmer Demo' };
+      localStorage.setItem('token', dummyToken);
+      localStorage.setItem('user', JSON.stringify(dummyUser));
       setLoading(false);
-    }
+      window.location.href = '/dashboard';
+    }, 1000);
   };
 
   return (

@@ -1,7 +1,7 @@
 {
-  "name": "feedsense-ai-backend",
+  "name": "krushifeed-ai-backend",
   "version": "1.0.0",
-  "description": "FeedSense AI Backend API",
+  "description": "KrushiFeed Ai Backend API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
